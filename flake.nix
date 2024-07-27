@@ -97,6 +97,7 @@
       framework-16-7040-amd = import ./framework/16-inch/7040-amd;
       friendlyarm-nanopc-t4 = import ./friendlyarm/nanopc-t4;
       friendlyarm-nanopi-r5s = import ./friendlyarm/nanopi-r5s;
+      friendlyarm-nanopi-r5c = import ./friendlyarm/nanopi-r5c;
       focus-m2-gen1 = import ./focus/m2/gen1;
       gigabyte-b550 = import ./gigabyte/b550;
       google-pixelbook = import ./google/pixelbook;
