@@ -1,4 +1,5 @@
 { lib
+, pkgs
 , ...
 }:
 
@@ -12,8 +13,12 @@
     };
   };
 
-  # This file needs to be at the top of /boot
-  hardware.deviceTree.name = lib.mkDefault "../../rk3568-nanopi-r5c.dtb";
+  # This file needs to be at top-level of /boot
+  # hardware.deviceTree.name = lib.mkDefault "../../rk3568-nanopi-r5c.dtb";
+  hardware.deviceTree = {
+    enable = true;
+    name = "rk3568-nanopi-r5c.dtb";
+  };
 
   boot.kernelParams = [
     "console=tty1"
@@ -39,6 +44,13 @@
         LEDS_BRIGHTNESS_HW_CHANGED y
         LEDS_TRIGGER_MTD y
       '';
+    }
+    {
+      name = "rk3568-nanopi-r5c-dtb.patch";
+      patch = pkgs.fetchurl {
+        url = "https://raw.githubusercontent.com/inindev/nanopi-r5/main/dtb/patches/0001-add-led-triggers.patch";
+        hash = "1hnjbzmgkji2byl54zzahsfyx876rjl5xz1mmqrn01cx9x1mdzkl";
+      };
     }
   ];
 
